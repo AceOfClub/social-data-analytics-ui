@@ -131,3 +131,6 @@ typings/
 
 ### Untitiled files ###
 Untitled-*
+
+dist/*.gif
+dist/*.js

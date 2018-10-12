@@ -1,3 +1,6 @@
+import './style.css';
+import AjaxLoader from './ajax-loader.gif';
+
 $(function () {
 
     $("#form_sdas_input").trigger("reset");
@@ -14,6 +17,11 @@ $(function () {
 
     $("#btn_submit").click(function(){
         onfinalClick();
+    });
+
+    $(document).on({
+        ajaxStart: function() { $("body").addClass("loading");    },
+         ajaxStop: function() { $("body").removeClass("loading"); }    
     });
 
 });
