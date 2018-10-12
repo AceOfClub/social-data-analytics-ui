@@ -37,7 +37,7 @@ function generateMapForKeyWordData(keyWord, keyWordDataByLocation) {
         scope: 'world',
         element: document.getElementById('data_vis_container'),
         projection: 'mercator',
-        height: 1000,
+        height: 750,
         fills: {
             defaultFill: '#a5a4a2',
             area: 'red',
