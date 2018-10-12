@@ -1,0 +1,13 @@
+sudo: false
+services:
+  - docker
+env:
+  global:
+    - secure: "fr0GvxrSwjPkb7o08HLU4eYSClTZw62OGX3z3WtNHpOE7oWbnmRaBvg3Zqx3b3Q5RI0TppC9uPoC509ILveRSTON8IBNjQW5fgtrTi4rHA9e9M2Io6yWJygi0pMS3ZRdMhDXrOST6IJ9HXQ1819Rh38mOeE6d8BnvBeMnOqv9lO5jpdZwBXJoAderdD9l1aZNYuK7WGgKXAdos41lbdUdM2T7ljRYvqacJN9KJDKBUXD854zrAriSxtiQ3TznBdSIUU/+cixOr70hBKw1WE1h6tX2zYo+wEijGriRzNsvRwJX2YG14yCs4VrjvAZjX+JSVywd5D16OKtCxzFCvS2rlymG5KTBh2hLcgam6dpRnGi3AfVPWICD8HwltjY4GgS/nkl/9BM2O2y282H0SB9O6aHFUhiS+JDg54QHm+K28myFj8vMWc0r4NbojOqGKtBU0oK3s2aPzA6owykzTey1mtsni/ioySgZjAWfZ1GNmWHkOSubyOA5lNuuTiq0gPSxOlo7mxe928U/KW/xBmqmp+bv/6paWRT21AtanYZR2cgCjrfiRzC5F1481KWxcx6vegW0+Hj5kMjRXJuexTADjRIP9FPo3t/XGTcIhyMvrOtnxcRG+AcDBAa18o6hXnayL/q0n87Gr/mVZ+oqXAVbq97gEcRWoy6TjMqJQ2TKE0="
+    - secure: "Qx29bCVephHSVkDecaugd8z6d9MkfnVRYg9MGjxTN1GQvdKNdN/cBEGjHIOZBjEQ0xPZ0oO2nw9mXYjrGOFlYouq6JJg0LVxfpvzKRmCf0mtGTMHL2fCQ0vfXMu+QetVlMhRYa27cq54Oym+xH4AurO4wocExQCyeREhJV0armedLJFZIZq34BxmJPedT6G8CtmGLeErcibbt4sD3dcShT3QIR709w9SWANDadt2mSEMxNoTmRsqkHUjIBh3tLzUE+VD+FKd4BkYQB2ccFcg2qPwHtQdwmMKaCzQvLV/VTNDypPq2rKouBekdL34Ge1AxaZznl/94mMEOIwPlCY3ud8aCsYIrlD3qNE9Ec8sSnSbVEsG0WhfMs6NjzAze+hs8j53huAESaCgmDQILUICysMRts8v+TmHP0pHyamS4OpWrdb8qiL8LPPiPqMZMM4YiSh+0vVLDpte9cXAArhOYSZoWJrTwNlE3SdwecZmLKEUmVMes/ZERQOMHUcaEDwwHXxTs7Hmid01l/apkKUmR8B5ml33PUOmsm7W13aWmYE3ICnFYoFPB/OmuqPpV7KKr/fQUG3m04N2p/htetlbWU0y6RSMTsra3kTRZ0ZhgOtHDs3tqslJYABQyrviGXaJZ+qusN/Epg+X4j7h/mmm27P7pl4RxDg6hzDzlGKV+1g="
+script:
+  - docker build -t $DOCKER_USERNAME/social-data-analytics-ui:$TRAVIS_COMMIT .
+after_success:
+  - test -n "$TRAVIS_TAG" && docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - test -n "$TRAVIS_TAG" && docker tag $DOCKER_USERNAME/social-data-analytics-ui:$TRAVIS_COMMIT $DOCKER_USERNAME/social-data-analytics-ui:$TRAVIS_TAG
+  - test -n "$TRAVIS_TAG" && docker push $DOCKER_USERNAME/social-data-analytics-ui:$TRAVIS_TAG

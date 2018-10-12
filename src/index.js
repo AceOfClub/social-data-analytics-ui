@@ -1,9 +1,19 @@
 $(function () {
+
     $("#form_sdas_input").trigger("reset");
+    onFormLoad();
     $("#txt_geo_code").trigger("geocode");
 
+    $("#lov_Search").change(function(){
+        onSearchModify();
+    });
+    
     $("#txt_geo_code").geocomplete({
         details: "#form_sdas_input",
+    });
+
+    $("#btn_submit").click(function(){
+        onfinalClick();
     });
 
 });
@@ -101,7 +111,7 @@ function onfinalClick() {
 
 }
 
-function onFormLoad(event) {
+function onFormLoad() {
     document.getElementById('lov_Search').value = 'keyword';
     document.getElementById("txt_keyWrd").disabled = '';
     document.getElementById("txt_keyWrd").value = '';
@@ -113,7 +123,7 @@ function onFormLoad(event) {
     document.getElementById("txt_radius").value = '';
 }
 
-function onSearchModify(event) {
+function onSearchModify() {
     if (document.getElementById('lov_Search').value == 'keyword') {
         document.getElementById("txt_keyWrd").disabled = '';
         document.getElementById("txt_keyWrd").value = '';

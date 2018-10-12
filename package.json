@@ -4,11 +4,14 @@
   "description": "UI for social data analytics service",
   "main": "index.js",
   "dependencies": {
-    "jquery": "^3.3.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "author": "Harish B",
   "license": "MIT"
