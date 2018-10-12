@@ -1,0 +1,35 @@
+<HTML>
+
+<HEAD>
+    <title>Social Data Analytics Service</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</HEAD>
+
+<BODY onload="onFormLoad()">
+    <h1>Social Data Analytics Service</h1>
+    <form id="form_sdas_input" onsubmit="return onfinalClick()">
+        Search By <select onchange="onSearchModify(event)" id='lov_Search'>
+            <option value="keyword" selected='selected'>Keyword</option>
+            <option value="location">Location</option>
+        </select> <br>
+        Keyword<input type="text" id="txt_keyWrd"><br>
+        Location <input type="text" id="txt_geo_code" />
+        <input type="hidden" id="txt_latitude" name="lat">
+        <input type="hidden" id="txt_longitude" name="lng" />
+        Radius <input type="text" id="txt_radius" onkeypress="return isNumberKey(event)" /><br>
+        <input type="submit" value='Search'>
+    </form>
+    <div id="data_vis_container" style="position: relative; width: 80%; max-height: 450px;"></div>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://ubilabs.github.io/geocomplete/jquery.geocomplete.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="http://datamaps.github.io/scripts/datamaps.world.min.js?v=1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-1.2.0.min.js"></script>
+    <script src="index.js"></script>
+</BODY>
+
+</HTML>
