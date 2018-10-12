@@ -7,21 +7,25 @@ $(function () {
     onFormLoad();
     $("#txt_geo_code").trigger("geocode");
 
-    $("#lov_Search").change(function(){
+    $("#lov_Search").change(function () {
         onSearchModify();
     });
-    
+
     $("#txt_geo_code").geocomplete({
         details: "#form_sdas_input",
     });
 
-    $("#btn_submit").click(function(){
+    $("#btn_submit").click(function () {
         onfinalClick();
     });
 
     $(document).on({
-        ajaxStart: function() { $("body").addClass("loading");    },
-         ajaxStop: function() { $("body").removeClass("loading"); }    
+        ajaxStart: function () {
+            $("body").addClass("loading");
+        },
+        ajaxStop: function () {
+            $("body").removeClass("loading");
+        }
     });
 
 });
@@ -120,32 +124,22 @@ function onfinalClick() {
 }
 
 function onFormLoad() {
-    document.getElementById('lov_Search').value = 'keyword';
-    document.getElementById("txt_keyWrd").disabled = '';
-    document.getElementById("txt_keyWrd").value = '';
-    document.getElementById("txt_latitude").disabled = 'true';
-    document.getElementById("txt_longitude").disabled = 'true';
-    document.getElementById("txt_radius").disabled = 'true';
-    document.getElementById("txt_latitude").value = '';
-    document.getElementById("txt_longitude").value = '';
-    document.getElementById("txt_radius").value = '';
+    if (document.getElementById('lov_Search').value == 'keyword') {
+        $("#div_keyword").show();
+        $("#div_location").hide();
+    } else {
+        $("#div_keyword").hide();
+        $("#div_location").show();
+    }
 }
 
 function onSearchModify() {
     if (document.getElementById('lov_Search').value == 'keyword') {
-        document.getElementById("txt_keyWrd").disabled = '';
-        document.getElementById("txt_keyWrd").value = '';
-        document.getElementById("txt_latitude").disabled = 'true';
-        document.getElementById("txt_longitude").disabled = 'true';
-        document.getElementById("txt_radius").disabled = 'true';
+        $("#div_keyword").show();
+        $("#div_location").hide();
     } else {
-        document.getElementById("txt_keyWrd").disabled = 'true';
-        document.getElementById("txt_latitude").disabled = '';
-        document.getElementById("txt_longitude").disabled = '';
-        document.getElementById("txt_radius").disabled = '';
-        document.getElementById("txt_latitude").value = '';
-        document.getElementById("txt_longitude").value = '';
-        document.getElementById("txt_radius").value = '';
+        $("#div_keyword").hide();
+        $("#div_location").show();
     }
 }
 

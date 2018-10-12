@@ -1,26 +1,56 @@
-<HTML>
+<!doctype html>
+<html lang="en">
 
-<HEAD>
+<head>
     <title>Social Data Analytics Service</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</HEAD>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
 
 <BODY>
-    <h1>Social Data Analytics Service</h1>
-    <form id="form_sdas_input">
-        Search By <select id='lov_Search'>
-            <option value="keyword" selected='selected'>Keyword</option>
-            <option value="location">Location</option>
-        </select> <br>
-        Keyword<input type="text" id="txt_keyWrd"><br>
-        Location <input type="text" id="txt_geo_code" />
-        <input type="hidden" id="txt_latitude" name="lat">
-        <input type="hidden" id="txt_longitude" name="lng" />
-        Radius <input type="text" id="txt_radius" /><br>
-        <input id="btn_submit" type="button" value='Search'>
-    </form>
-    <div id="data_vis_container" style="position: relative; width: 80%; max-height: 450px;"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 class="pb-5 pt-3">Social Data Analytics Service</h1>
+        </div>
+
+        <div class="row justify-content-center">
+            <form id="form_sdas_input">
+                <div class="form-group row">
+                    <label for="lov_Search" class="col-sm-4 col-form-label">Search by</label>
+                    <div class="col-sm-8">
+                        <select id='lov_Search' class="form-control">
+                            <option value="keyword" selected='selected'>Keyword</option>
+                            <option value="location">Location</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="div_keyword">
+                    <div class="form-group row">
+                        <label for="txt_keyWrd" class="col-sm-4 col-form-label">Keyword</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt_keyWrd" placeholder="messi">
+                        </div>
+                    </div>
+                </div>
+                <div id="div_location">
+                    <div class="form-group row">
+                        <label for="txt_geo_code" class="col-sm-4 col-form-label">Location</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="txt_geo_code" placeholder="Bengaluru">
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="txt_radius" value="100">
+                <input type="hidden" id="txt_latitude" name="lat">
+                <input type="hidden" id="txt_longitude" name="lng" />
+                <input id="btn_submit" type="button" class="btn btn-primary" value='Search'>
+            </form>
+        </div>
+        <div class="row justify-content-center">
+            <div id="data_vis_container" style="position: relative; width: 80%; max-height: 450px;"></div>
+        </div>
+    </div>
     <div class="modal"></div>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

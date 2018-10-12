@@ -18,3 +18,9 @@ body.loading .modal {
 body.loading .modal {
     display: block;
 }
+
+.center-justified {
+    text-align: justify;
+    margin: 0 auto;
+    width: 30em;
+  }
