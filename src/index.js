@@ -85,7 +85,7 @@ function onfinalClick() {
 
 
 
-    var urlVar = 'http://localhost:8080/data/';
+    var urlVar = 'http://35.200.142.31:8080/data/';
     if (lovVal == 'keyword') {
         urlVar = urlVar + 'hashtag/' + name;
         console.log("Url Keyword>> " + urlVar);
