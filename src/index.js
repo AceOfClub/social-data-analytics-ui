@@ -30,7 +30,6 @@ $(function () {
 
 });
 
-
 function generateMapForKeyWordData(keyWord, keyWordDataByLocation) {
     $('#data_vis_container').empty();
     var map = new Datamap({
